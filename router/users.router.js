@@ -1,32 +1,25 @@
 const express=require('express');
+const usersController = require('../controllers/users.controller');
 const router= express.Router();
 
-//TO DO REMOVE
-
-const users=[{id:1,firstName:"Forrest",lastname:"Gump"},
-             {id:2,firstName:"HArry",lastname:"Sedon"},
-             {id:3,firstName:"Mircet",lastname:"Magnum"}];
-
 router.post('/', (req, res) => {
-    console.log(req.body);
+    usersController.createUser(req.body);
     res.status(201);  //codul de eroare , custom error code
     res.send("Succesfuly Created");
   })
 
 router.get('/',(req,res) => {
-    console.log(req.query.id);
-    const userID=req.query.id;
-    let found=false
-
-    for(let i=0;i< users.length;i++){
-        if(users[i].id == userID){
-            res.send(users[i]);
-            found=true;
-            //return;
-        }
-    }
-    if(!found)
-    res.status(404).send;
+    const userID=req.query.id; //daca e query param
+    console.log(userID);
+    res.status(404).send();
   
+})
+
+router.delete('/:id',(req,res)=> {
+    const userID=req.params.id;
+    console.log(userID);
+    usersController.deleteUser(userID);
+    res.status(100).send();
+
 })
 module.exports =router;

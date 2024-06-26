@@ -44,4 +44,4 @@ app.listen(port, () => {
 //Crud-> create,read,update,delete
 
 //cookies-> retine preferintele utilizatorului, retine ca userul este conectat,
-//          datele sunt stocate pe laptopul tau
+//          datele sunt stocate pe laptopul tau 
