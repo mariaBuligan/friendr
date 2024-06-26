@@ -1,5 +1,6 @@
 const express = require('express')
-const usersRouter=require('./router/users.router')
+const usersRouter = require('./router/users.router');
+const postsRouter = require('./router/posts.router');
 
 
 const app = express()
@@ -10,6 +11,7 @@ app.use(express.json());
 
 //Routers
 app.use('/users',usersRouter);
+app.use('/posts',postsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
