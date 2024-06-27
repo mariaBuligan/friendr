@@ -1,6 +1,7 @@
 const express = require('express')
 const usersRouter = require('./router/users.router');
 const postsRouter = require('./router/posts.router');
+const mongoose = require('mongoose');
 
 
 const app = express()
@@ -14,7 +15,11 @@ app.use('/users',usersRouter);
 app.use('/posts',postsRouter);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
+
+  mongoose.connect("mongodb+srv://mariabuligan13:aRUoFGzmxUdc8Yfj@cluster0.btpqkz5.mongodb.net/")
+                  .then(() => console.log("Connected!"))
+                  .catch((err) => console.error(err))
 })
 
 
