@@ -37,7 +37,20 @@ const postsController={
         res.status(400).send("Invalid User");
       } else 
             res.status(200).send(`The user with the ID:${postID} was deleted`);
+    },
+
+    updatePost: async(req,res) => {
+        const postID = req.params.id;
+        const newTitle =req.params.title;
+        const newDescrption = req.params.description;
+
+        console.log(postID,newTitle,newDescrption);
+        
+        const response = await postsService.updatePost(postID,newTitle,newDescrption);
+        console.log(response);
+        res.status(200).send("Title and Description have been modified");
     }
 }
+
 
 module.exports = postsController;

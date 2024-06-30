@@ -20,6 +20,15 @@ const postsService={
          console.log(`Deleted post with the Id: ${postID}`);
         const response = await PostModel.collection.deleteOne({ id: postID });
         return response;
+    },
+    updatePost: async(postID,newTitle,newDescrption) => {
+        const ObjToBeModified = await PostModel.updateOne({ id:postID  },
+            {
+              $set: {
+                title: newTitle,
+                description: newDescrption
+              }
+            })
     }
 }
 
