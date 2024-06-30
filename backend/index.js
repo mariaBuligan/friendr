@@ -29,7 +29,7 @@ app.listen(port, () => {
 
 
 
-
+//posts:datae,id,id_user,title,desciption
 
 
 /* app.post('/users/', (req, res) => {

@@ -26,10 +26,14 @@ const usersController={
     deleteUser:async(req,res) => {
         const UserID =req.params.id
         console.log(`Delete user with id: ${UserID}`);
-        const UserObj = await  usersService.deleteUser(UserID);
-        res.status(300).json(UserObj);
 
-       
+        if( usersModel.find({"id": UserID}) != null){
+            usersService.deleteUser(UserID);
+            res.status(200);
+        }else {
+           console.log(`The user with the ID=${UserID} doesn't exist`);
+           res.status(400);
+        }
     }
 }
 
