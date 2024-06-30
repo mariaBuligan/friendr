@@ -17,9 +17,8 @@ const usersService = {
 
   deleteUser: async (userID) => {
     console.log(`Reached user delete service`);
-    console.log(userID);
     const response = await userModel.collection.deleteOne({ id: userID });
-    console.log(response);
+    return response;
   },
 };
 

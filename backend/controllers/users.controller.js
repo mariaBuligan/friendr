@@ -27,13 +27,12 @@ const usersController={
         const UserID =req.params.id
         console.log(`Delete user with id: ${UserID}`);
 
-        if( usersModel.find({"id": UserID}) != null){
-            usersService.deleteUser(UserID);
-            res.status(200);
-        }else {
+       
+            const result = usersService.deleteUser(UserID);
+        if((await result).deletedCount == 0){
            console.log(`The user with the ID=${UserID} doesn't exist`);
-           res.status(400);
-        }
+           res.status(400).send('Invalid User');
+        }else res.status(200).send(`The user with the ID:${UserID} was deleted`);
     }
 }
 
