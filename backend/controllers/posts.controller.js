@@ -4,11 +4,16 @@ const PostModel = require ("../data/posts.model");
 
 const postsController={
     getPost: async(req,res) => {
-         const postID = req.query.id;
+         const postID = req.params.id;
          console.log(`Id luat:${postID}.`)
          const postObj = await postsService.getPost(postID);
          res.status(200).json(postObj);
          
+    },
+
+    getAllPosts: async(req,res) => {
+        const postsObj = await postsService.getAllPosts()
+        res.status(200).send(postsObj);
     },
 
     createPost: async(req,res) => {
@@ -17,9 +22,12 @@ const postsController={
         console.log(postToBeCreated);
         
         if(postToBeCreated === undefined || JSON.stringify(postToBeCreated) ==='{}' ||
-            !postToBeCreated.title ||  !postToBeCreated.id || !postToBeCreated.user_id || !postToBeCreated.date ){
+            !postToBeCreated.title ||  !postToBeCreated.id || !postToBeCreated.user_id ){
+                
                    res.status(401).send("Post introduced is NOT valid");
+
             }else{
+                postToBeCreated.date = new Date().toISOString();
                 postsService.createPost(postToBeCreated);
                   res.status(201).send("Created New Post")
             }
@@ -28,7 +36,6 @@ const postsController={
 
     deletePost: async(req,res) => {
        const postID = req.params.id;
-       console.log(`Delete post with the ID: ${postID}`);
 
        const result =  postsService.deletePost(postID);
 

@@ -9,6 +9,10 @@ const postsService={
          return foundPost;
 
     },
+    getAllPosts: async() => {
+      const response = await PostModel.find({});
+      return response;
+    },
     createPost: async(post_body) => {
         console.log("Reached post POST service");
 

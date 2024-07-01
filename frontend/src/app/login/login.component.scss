@@ -1,0 +1,33 @@
+.container{
+    background-color:rgb(243, 235, 244);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.login-card{
+    width: 500px;
+    height: auto;
+    background-color:rgb(199, 196, 196);
+    border-radius: 8px;
+    padding: 16px;
+    gap:10px;
+    
+    display: flex;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+}
+
+.sign-in-btn{
+    background-color: red;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border:none;
+    padding: 10px 32px; // sus/jos=10 si stanga/dreapta=32
+}
