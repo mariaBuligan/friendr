@@ -1,8 +1,8 @@
 const userModel = require("../data/users.model");
 
 const usersService = {
-  getUser: async (userID) => {
-    const response = await userModel.find({ id: userID });
+  getUser: async (UserName) => {
+    const response = await userModel.findOne({ userName: UserName });
     console.log(response);
     return response;
   },

@@ -1,6 +1,7 @@
 
 const postsService = require("../services/posts.service");
 const PostModel = require ("../data/posts.model");
+const { v4: uuid } =require('uuid');
 
 const postsController={
     getPost: async(req,res) => {
@@ -19,10 +20,11 @@ const postsController={
     createPost: async(req,res) => {
         console.log("Reached post POST controller");
         const postToBeCreated = req.body;
+        postToBeCreated.id= uuid();
         console.log(postToBeCreated);
         
         if(postToBeCreated === undefined || JSON.stringify(postToBeCreated) ==='{}' ||
-            !postToBeCreated.title ||  !postToBeCreated.id || !postToBeCreated.user_id ){
+            !postToBeCreated.title  || !postToBeCreated.author ){
                 
                    res.status(401).send("Post introduced is NOT valid");
 

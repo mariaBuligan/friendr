@@ -3,10 +3,14 @@ const usersService = require("../services/users.service");
 
 const usersController={
     getUser: async(req,res) => {
-        const UserID =req.params.id
+        const UserName =req.params.userName
         console.log("Reached Get user controller");
-        console.log(UserID);
-        const userObj = await usersService.getUser(UserID);
+        console.log(UserName);
+        const userObj = await usersService.getUser(UserName);
+        if(!userObj){
+            res.status(404).send();
+            return;
+        }
         res.status(200).json(userObj);
     },
 

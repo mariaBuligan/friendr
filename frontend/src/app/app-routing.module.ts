@@ -17,7 +17,8 @@ const routes: Routes = [
     path:'homepage',
     component:HomepageComponent
   },
-  {path:'**',component:LoginComponent},
+  {path:'**',redirectTo:''}, //o cale pe care nu o avem in path o sa duca automat la LoginComponent
+                                        //** -> inseamna ORICE cale ->se duce la pathul ''(empty) ->LoginComponent
 ];
 
 
