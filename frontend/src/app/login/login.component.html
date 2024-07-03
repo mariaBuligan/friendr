@@ -4,7 +4,7 @@
          <div>Sign in to your account </div>
 
         <input type="text" placeholder="Enter you user name" [(ngModel)]="username">
-        <button class="sign-in-btn" (click)="signIn()">Sign in</button>
+        <button class="sign-in-btn" (click)="signIn()" [disabled]="loading">Sign in</button>
     </div>
    
 </div>

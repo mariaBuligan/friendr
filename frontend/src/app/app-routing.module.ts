@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
+import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     path:'homepage',
     component:HomepageComponent
   },
+
   {path:'**',redirectTo:''}, //o cale pe care nu o avem in path o sa duca automat la LoginComponent
                                         //** -> inseamna ORICE cale ->se duce la pathul ''(empty) ->LoginComponent
 ];
