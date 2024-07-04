@@ -32,6 +32,14 @@ const postsService={
                 description: newDescrption
               }
             })
+    },
+
+    removePostLike: async(postId,username) => {
+        await PostModel.updateOne({id:postId},{$pull:{likes:username}});
+    },
+
+    addPostLike: async(postId,username) => {
+        await PostModel.updateOne({id:postId},{$push:{likes:username}})
     }
 }
 

@@ -6,7 +6,7 @@ const PostModel = mongoose.model('Post',
         date:String,
         title:String,
         description:String,
-        
+        likes:[String]
     } 
 );
 

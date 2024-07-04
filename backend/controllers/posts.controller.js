@@ -58,6 +58,28 @@ const postsController={
         const response = await postsService.updatePost(postID,newTitle,newDescrption);
         console.log(response);
         res.status(200).send("Title and Description have been modified");
+    },
+
+    updatePostLikes: async(req,res) => {
+        const postId= req.param.id;
+        const username =  req.body.username;
+        console.log("reached controller likes")
+        console.log(postId);
+        console.log(username);
+
+        const postObj = await postsService.getPost(postId);
+        if(!postObj){
+            res.status(404).send();
+            return;
+        }
+        const likes = postObj.likes;
+
+        if(likes.includes(username))
+            await postsService.removePostLike(postId,username)
+         else postsService.addPostLike(postId,username)
+
+         const updatePostObj = await postsService.getPost(postId);
+         res.status(400).send(updatePostObj);
     }
 }
 
